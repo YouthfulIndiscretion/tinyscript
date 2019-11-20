@@ -3,12 +3,21 @@ version: 2.0
 shared: &shared
     working_directory: ~/pytest_run
     steps:
-      - pip install coveralls
-      - pip install "cairocffi>=1.0.0"
-      - pip install pytest-cov
-      - pip install -r requirements.txt
-      - python setup.py install
-      - pytest -v --cov=tinyscript --cov-append --cov-report="term-missing" tests
+      - checkout
+      - run:
+          - name: install requirements
+          - command: |
+              - pip install coveralls
+              - pip install "cairocffi>=1.0.0"
+              - pip install pytest-cov
+              - pip install -r requirements.txt
+      - run:
+          - name: install package
+          - command: python setup.py install
+      -run:
+        - name: run tests
+        - command: |
+           pytest -v --cov=tinyscript --cov-append --cov-report="term-missing" tests
 
 jobs:
   "2.7":
