@@ -106,7 +106,8 @@ jobs:
       - checkout
       - run:
           name: install python 27
-          command: choco install python2
+          command: |
+            choco install python2 vcpython27
       - run:
           name: install requirements
           command: |
