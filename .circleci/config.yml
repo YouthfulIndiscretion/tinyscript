@@ -16,7 +16,7 @@ jobs:
       - run:
         - name: install package
         - command: python setup.py install
-      -run:
+      - run:
         - name: run tests
         - command: |
             pytest -v --cov=tinyscript --cov-append --cov-report="term-missing" tests
@@ -36,7 +36,7 @@ jobs:
       - run:
         - name: install package
         - command: python setup.py install
-      -run:
+      - run:
         - name: run tests
         - command: |
             pytest -v --cov=tinyscript --cov-append --cov-report="term-missing" tests
@@ -56,7 +56,7 @@ jobs:
       - run:
         - name: install package
         - command: python setup.py install
-      -run:
+      - run:
         - name: run tests
         - command: |
             pytest -v --cov=tinyscript --cov-append --cov-report="term-missing" tests
@@ -76,7 +76,7 @@ jobs:
       - run:
         - name: install package
         - command: python setup.py install
-      -run:
+      - run:
         - name: run tests
         - command: |
             pytest -v --cov=tinyscript --cov-append --cov-report="term-missing" tests
@@ -96,7 +96,7 @@ jobs:
       - run:
         - name: install package
         - command: python setup.py install
-      -run:
+      - run:
         - name: run tests
         - command: |
             pytest -v --cov=tinyscript --cov-append --cov-report="term-missing" tests
