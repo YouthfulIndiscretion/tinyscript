@@ -105,6 +105,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: install python 27
+          command: choco install python2
+      - run:
           name: install requirements
           command: |
             pip install pytest-cov
