@@ -1,13 +1,15 @@
 version: 2.0
 
-shared: &shared
+jobs:
+  "2.7":
+    docker:
+      - image: python:2.7-slim-buster
     working_directory: ~/pytest_run
     steps:
       - checkout
       - run:
           - name: install requirements
           - command: |
-              - pip install coveralls
               - pip install "cairocffi>=1.0.0"
               - pip install pytest-cov
               - pip install -r requirements.txt
@@ -17,33 +19,87 @@ shared: &shared
       -run:
         - name: run tests
         - command: |
-           pytest -v --cov=tinyscript --cov-append --cov-report="term-missing" tests
-
-jobs:
-  "2.7":
-    <<: *shared
-    docker:
-      - image: python:2.7-slim-buster
+            pytest -v --cov=tinyscript --cov-append --cov-report="term-missing" tests
 
   "3.5":
-    <<: *shared
     docker:
       - image: python:2.5-slim-buster
+    working_directory: ~/pytest_run
+    steps:
+      - checkout
+      - run:
+          - name: install requirements
+          - command: |
+              - pip install "cairocffi>=1.0.0"
+              - pip install pytest-cov
+              - pip install -r requirements.txt
+      - run:
+          - name: install package
+          - command: python setup.py install
+      -run:
+        - name: run tests
+        - command: |
+            pytest -v --cov=tinyscript --cov-append --cov-report="term-missing" tests
 
   "3.6":
-    <<: *shared
     docker:
       - image: python:3.6-slim-buster
+    working_directory: ~/pytest_run
+    steps:
+      - checkout
+      - run:
+          - name: install requirements
+          - command: |
+              - pip install "cairocffi>=1.0.0"
+              - pip install pytest-cov
+              - pip install -r requirements.txt
+      - run:
+          - name: install package
+          - command: python setup.py install
+      -run:
+        - name: run tests
+        - command: |
+            pytest -v --cov=tinyscript --cov-append --cov-report="term-missing" tests
 
   "3.7":
-    <<: *shared
     docker:
       - image: python:3.7-slim-buster
+    working_directory: ~/pytest_run
+    steps:
+      - checkout
+      - run:
+          - name: install requirements
+          - command: |
+              - pip install "cairocffi>=1.0.0"
+              - pip install pytest-cov
+              - pip install -r requirements.txt
+      - run:
+          - name: install package
+          - command: python setup.py install
+      -run:
+        - name: run tests
+        - command: |
+            pytest -v --cov=tinyscript --cov-append --cov-report="term-missing" tests
 
   "3.8":
-    <<: *shared
     docker:
       - image: python:3.8-slim-buster
+    working_directory: ~/pytest_run
+    steps:
+      - checkout
+      - run:
+          - name: install requirements
+          - command: |
+              - pip install "cairocffi>=1.0.0"
+              - pip install pytest-cov
+              - pip install -r requirements.txt
+      - run:
+          - name: install package
+          - command: python setup.py install
+      -run:
+        - name: run tests
+        - command: |
+            pytest -v --cov=tinyscript --cov-append --cov-report="term-missing" tests
 
 workflows:
   version: 2
