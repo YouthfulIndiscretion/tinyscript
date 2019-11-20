@@ -1,0 +1,45 @@
+version: 2.0
+
+shared: &shared
+    working_directory: ~/pytest_run
+    steps:
+      - pip install coveralls cairocffi>=1.0.0 pytest-cov
+      - pip install -r requirements.txt
+      - python setup.py install
+      - pytest -v --cov=tinyscript --cov-append --cov-report="term-missing" tests
+
+jobs:
+  "2.7":
+    <<: *shared
+    docker:
+      - image: python:2.7-slim-buster
+
+  "3.5":
+    <<: *shared
+    docker:
+      - image: python:2.5-slim-buster
+
+  "3.6":
+    <<: *shared
+    docker:
+      - image: python:3.6-slim-buster
+
+  "3.7":
+    <<: *shared
+    docker:
+      - image: python:3.7-slim-buster
+
+  "3.8":
+    <<: *shared
+    docker:
+      - image: python:3.8-slim-buster
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - "2.7"
+      - "3.5"
+      - "3.6"
+      - "3.7"
+      - "3.8"
