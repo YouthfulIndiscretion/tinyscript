@@ -8,14 +8,14 @@ jobs:
     steps:
       - checkout
       - run:
-          - name: install requirements
-          - command: |
-              - pip install "cairocffi>=1.0.0"
-              - pip install pytest-cov
-              - pip install -r requirements.txt
+        - name: install requirements
+        - command: |
+            - pip install "cairocffi>=1.0.0"
+            - pip install pytest-cov
+            - pip install -r requirements.txt
       - run:
-          - name: install package
-          - command: python setup.py install
+        - name: install package
+        - command: python setup.py install
       -run:
         - name: run tests
         - command: |
@@ -28,14 +28,14 @@ jobs:
     steps:
       - checkout
       - run:
-          - name: install requirements
-          - command: |
-              - pip install "cairocffi>=1.0.0"
-              - pip install pytest-cov
-              - pip install -r requirements.txt
+        - name: install requirements
+        - command: |
+            - pip install "cairocffi>=1.0.0"
+            - pip install pytest-cov
+            - pip install -r requirements.txt
       - run:
-          - name: install package
-          - command: python setup.py install
+        - name: install package
+        - command: python setup.py install
       -run:
         - name: run tests
         - command: |
@@ -48,14 +48,14 @@ jobs:
     steps:
       - checkout
       - run:
-          - name: install requirements
-          - command: |
-              - pip install "cairocffi>=1.0.0"
-              - pip install pytest-cov
-              - pip install -r requirements.txt
+        - name: install requirements
+        - command: |
+            - pip install "cairocffi>=1.0.0"
+            - pip install pytest-cov
+            - pip install -r requirements.txt
       - run:
-          - name: install package
-          - command: python setup.py install
+        - name: install package
+        - command: python setup.py install
       -run:
         - name: run tests
         - command: |
@@ -68,14 +68,14 @@ jobs:
     steps:
       - checkout
       - run:
-          - name: install requirements
-          - command: |
-              - pip install "cairocffi>=1.0.0"
-              - pip install pytest-cov
-              - pip install -r requirements.txt
+        - name: install requirements
+        - command: |
+            - pip install "cairocffi>=1.0.0"
+            - pip install pytest-cov
+            - pip install -r requirements.txt
       - run:
-          - name: install package
-          - command: python setup.py install
+        - name: install package
+        - command: python setup.py install
       -run:
         - name: run tests
         - command: |
@@ -88,14 +88,14 @@ jobs:
     steps:
       - checkout
       - run:
-          - name: install requirements
-          - command: |
-              - pip install "cairocffi>=1.0.0"
-              - pip install pytest-cov
-              - pip install -r requirements.txt
+        - name: install requirements
+        - command: |
+            - pip install "cairocffi>=1.0.0"
+            - pip install pytest-cov
+            - pip install -r requirements.txt
       - run:
-          - name: install package
-          - command: python setup.py install
+        - name: install package
+        - command: python setup.py install
       -run:
         - name: run tests
         - command: |
