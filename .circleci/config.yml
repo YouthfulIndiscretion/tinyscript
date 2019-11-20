@@ -10,7 +10,6 @@ jobs:
       - run:
           name: install requirements
           command: |
-            pip install "cairocffi>=1.0.0"
             pip install pytest-cov
             pip install -r requirements.txt
       - run:
