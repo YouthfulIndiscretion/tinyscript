@@ -1,7 +1,10 @@
-version: 2.0
+version: 2.1
+
+orbs:
+  win: circleci/windows@1.0.0
 
 jobs:
-  "2.7":
+  "linux-2.7":
     docker:
       - image: python:2.7-buster
     working_directory: ~/pytest_run
@@ -20,7 +23,7 @@ jobs:
           command: |
             pytest -v --cov=tinyscript --cov-append --cov-report="term-missing" tests
 
-  "3.5":
+  "linux-3.5":
     docker:
       - image: python:3.5-buster
     working_directory: ~/pytest_run
@@ -39,7 +42,7 @@ jobs:
           command: |
             pytest -v --cov=tinyscript --cov-append --cov-report="term-missing" tests
 
-  "3.6":
+  "linux-3.6":
     docker:
       - image: python:3.6-buster
     working_directory: ~/pytest_run
@@ -58,7 +61,7 @@ jobs:
           command: |
             pytest -v --cov=tinyscript --cov-append --cov-report="term-missing" tests
 
-  "3.7":
+  "linux-3.7":
     docker:
       - image: python:3.7-buster
     working_directory: ~/pytest_run
@@ -77,9 +80,27 @@ jobs:
           command: |
             pytest -v --cov=tinyscript --cov-append --cov-report="term-missing" tests
 
-  "3.8":
+  "linux-3.8":
     docker:
       - image: python:3.8-buster
+    working_directory: ~/pytest_run
+    steps:
+      - checkout
+      - run:
+          name: install requirements
+          command: |
+            pip install pytest-cov
+            pip install -r requirements.txt
+      - run:
+          name: install package
+          command: python setup.py install
+      - run:
+          name: run tests
+          command: |
+            pytest -v --cov=tinyscript --cov-append --cov-report="term-missing" tests
+
+  "windows-2.7":
+    executor: win/vs2019
     working_directory: ~/pytest_run
     steps:
       - checkout
@@ -100,8 +121,8 @@ workflows:
   version: 2
   build:
     jobs:
-      - "2.7"
-      - "3.5"
-      - "3.6"
-      - "3.7"
-      - "3.8"
+      - "linux-2.7"
+      - "linux-3.5"
+      - "linux-3.6"
+      - "linux-3.7"
+      - "linux-3.8"
