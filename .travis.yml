@@ -6,10 +6,10 @@ python:
   - "3.5"
   - "2.7"
   - "pypy"
-  - "pypy3"# this works for Linux but is an error on macOS or Windows
+  - "pypy3"
 jobs:
   include:
-    - name: "Python 3.8.0 on Linux"
+#    - name: "Python 3.8.0 on Linux"
 # Build on macOS does not work for the time being
 #    - name: "Python 3.7.4 on macOS"
 #      os: osx
@@ -21,15 +21,20 @@ jobs:
       before_install:
         - choco install python --version 3.8.0
         - python -m pip install --upgrade pip
+        - git clone https://github.com/Microsoft/vcpkg
+        - cd vcpkg
+        - .\bootstrap-vcpkg.bat
+        - vcpkg install gtk:x64-windows
+        - cd ..
       env: PATH=/c/Python38:/c/Python38/Scripts:$PATH
-    - name: "Python 3.7.5 on Windows"
-      os: windows
-      language: shell
-      before_install:
-        - choco install python --version 3.7.5
-        - choco install gtk-runtime
-        - python -m pip install --upgrade pip
-      env: PATH=/c/Python37:/c/Python37/Scripts:$PATH
+#    - name: "Python 3.7.5 on Windows"
+#      os: windows
+#      language: shell
+#      before_install:
+#        - choco install python --version 3.7.5
+#        - choco install gtk-runtime
+#        - python -m pip install --upgrade pip
+#      env: PATH=/c/Python37:/c/Python37/Scripts:$PATH
 cache: pip
 install:
   - pip install coveralls
